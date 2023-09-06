@@ -5,6 +5,7 @@ const User = require('./userModel');
 const Cart = require('./cartModel');
 const Order = require('./orderModel');
 const OrderDetails = require('./orderdetailsModel');
+
 sequelize.sync();
 module.exports = {
     Category,

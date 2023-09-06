@@ -21,7 +21,7 @@ module.exports = {
         const updatedCategory = req.body;
         const categoryUpdate = await categoryService.updateCategory({
         id: uid,
-        category_name: updatedCategory.name,
+        category_name: updatedCategory.category_name,
         category_id: updatedCategory.category_id
         });
         res.json({
