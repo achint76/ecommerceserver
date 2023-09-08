@@ -6,12 +6,55 @@ const Cart = require('./cartModel');
 const Order = require('./orderModel');
 const OrderDetails = require('./orderdetailsModel');
 
-sequelize.sync();
+User.hasMany(Order, {
+    foreignKey: 'user_id',
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE"
+});
+Order.belongsTo(User,{
+    foreignKey: 'user_id',
+});
+
+User.hasMany(Cart, {
+    foreignKey: 'user_id',
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE"
+});
+Cart.belongsTo(User,{
+    foreignKey: 'user_id',
+});
+
+// Product.hasMany(Cart, {
+//     foreignKey: "product_id",
+//     onDelete: "CASCADE",
+//     onUpdate: "CASCADE",
+// });
+// Cart.belongsTo(Product);
+
+// Product.hasMany(OrderDetails, {
+//     foreignKey: "product_id",
+//     onDelete: "CASCADE",
+//     onUpdate: "CASCADE",
+// });
+// OrderDetails.belongsTo(Product);
+
+// Category.hasMany(Product, {
+//     foreignKey: "category_id",
+//     onDelete: "CASCADE",
+//     onUpdate: "CASCADE",
+// });
+// Product.belongsTo(Category);
+
+
+
+sequelize.sync({force:false});
+
 module.exports = {
     Category,
     Product,
     User,
     Cart,
     Order,
-    OrderDetails
+    OrderDetails,
+    sequelize
 };
