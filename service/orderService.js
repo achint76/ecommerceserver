@@ -22,4 +22,26 @@ module.exports = {
         });
     },
 
+    insertOrder: async function ({ cartdata }) {
+        // console.log(cartdata);
+    
+        const addOrders = await Promise.all(
+          cartdata.map(async obj => {
+            await models.Order.bulkCreate([
+              {
+                user_id: obj.user_id,
+                product_id:obj.product_id,
+                total: "600",
+    
+              },
+            ]);
+          })
+        );
+    
+        const orders = await models.Order.findAll()
+        return orders;
+      
+
+    }
+
 }

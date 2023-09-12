@@ -1,6 +1,6 @@
 const sequelize = require('../db/config');
 
-const {DataTypes} = require('sequelize');
+const {DataTypes, UUIDV4} = require('sequelize');
 
 const Order = sequelize.define('ordertable', {
     id: {
@@ -14,8 +14,9 @@ const Order = sequelize.define('ordertable', {
        allowNull: false 
     },
     order_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false
+        type: DataTypes.UUID,
+        allowNull: false,
+        defaultValue: UUIDV4
     },
     total: {
         type: DataTypes.INTEGER,

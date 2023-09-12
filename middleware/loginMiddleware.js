@@ -12,7 +12,7 @@ async function userProfile(req,res, next){
             }
             else{
                 req.userdata=authData;
-                // console.log(req.userdata);
+                console.log(req.userdata);
                 next();
             }
         })

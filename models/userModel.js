@@ -13,7 +13,7 @@ const User = sequelize.define('usertable', {
        type: DataTypes.STRING(20),
        allowNull: false 
     },
-    email: {
+    email: { 
         type: DataTypes.STRING(30),
         allowNull: false
     },

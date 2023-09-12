@@ -33,7 +33,7 @@ const jwtService = require('../service/jwtService');
 async function loginfunc (req,res){
     const data = req.body;
     const user = await loginService.loginfunc({
-        
+        id: data.id,
         name: data.name,
         email: data.email,
         password: data.password
@@ -43,7 +43,7 @@ async function loginfunc (req,res){
     if(data.email == dbUser.email && data.name == dbUser.name && data.password == dbUser.password)
     {
         const jwt = jwtService.createToken({
-        
+            id: dbUser.id,
             name: dbUser.name,
             email: dbUser.email
         })

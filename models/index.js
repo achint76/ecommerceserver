@@ -24,32 +24,38 @@ Cart.belongsTo(User,{
     foreignKey: 'user_id',
 });
 
-// Product.hasMany(Cart, {
-//     foreignKey: "product_id",
-//     onDelete: "CASCADE",
-//     onUpdate: "CASCADE",
-// });
-// Cart.belongsTo(Product);
+Product.hasMany(Cart, {
+    foreignKey: "product_id",
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE",
+});
+Cart.belongsTo(Product,{
+    foreignKey: "product_id",
+});
 
-// Product.hasMany(OrderDetails, {
-//     foreignKey: "product_id",
-//     onDelete: "CASCADE",
-//     onUpdate: "CASCADE",
-// });
-// OrderDetails.belongsTo(Product);
+Product.hasMany(OrderDetails, {
+    foreignKey: "product_id",
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE",
+});
+OrderDetails.belongsTo(Product,{
+    foreignKey: "product_id",
+});
 
-// Category.hasMany(Product, {
-//     foreignKey: "category_id",
-//     onDelete: "CASCADE",
-//     onUpdate: "CASCADE",
-// });
-// Product.belongsTo(Category);
+Category.hasMany(Product, {
+    foreignKey: "category_id",
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE",
+});
+Product.belongsTo(Category,{
+    foreignKey: "category_id",
+});
 
 
 
-sequelize.sync({force:false});
+sequelize.sync({force: false});
 
-module.exports = {
+module.exports = { 
     Category,
     Product,
     User,
