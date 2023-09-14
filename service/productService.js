@@ -32,5 +32,14 @@ module.exports = {
             }
         });
     },
+    findProduct: async function({id}){
+        const product = await models.Product.findAll({
+            where:{
+                id: id
+            }
+        });
+        const allProduct = product.map(product=> product.toJSON());
+        return (allProduct);
+    }
 
 }

@@ -54,7 +54,7 @@ async function checkOut({ id }) {
   for (let i = 0; i < data.length; i++) {
     cartData[i] = data[i].dataValues;
   }
-  
+   
   await models.Cart.destroy({
     where: {
       user_id: id,

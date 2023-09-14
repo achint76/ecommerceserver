@@ -39,5 +39,15 @@ module.exports = {
             id: uid
         });
         res.json({message: 'Product deleted', data: productDelete})
+    },
+
+    findProduct: async function(req,res){
+        const data = req.body;
+        const product = await productService.findProduct({
+            id:data.id
+        })
+        res.json({
+            product : product
+        })
     }
 }

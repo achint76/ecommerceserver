@@ -52,7 +52,7 @@ module.exports = {
             },{
                 where: {
                     [Op.and]:
-                        [{ user_id: user_id },
+                        [{ user_id: user_id }, 
                         { product_id: product_id }]
                 }
             })
@@ -93,5 +93,19 @@ findprice: async function ({
     const price = quantity * productdata[0].price
     console.log(price);
     return price;
-}
+},
+// reduceoneormore: async function({product_id, id}){
+//     console.log(id);
+//     const result = await models.Cart.findAll({
+//         where: {
+//             [Op.and]: [
+//                 { user_id: id },
+//                 { product_id: product_id }
+//             ]
+//         },
+//         raw: true
+//     });
+//     console.log(result);
+//     return (result);
+// }
 }

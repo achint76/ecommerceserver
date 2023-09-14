@@ -5,7 +5,7 @@ const User = require('./userModel');
 const Cart = require('./cartModel');
 const Order = require('./orderModel');
 const OrderDetails = require('./orderdetailsModel');
-
+const Inventory = require('./inventoryModel');
 User.hasMany(Order, {
     foreignKey: 'user_id',
     onDelete: "CASCADE",
@@ -51,6 +51,14 @@ Product.belongsTo(Category,{
     foreignKey: "category_id",
 });
 
+Product.hasMany(Inventory,{
+    foreignKey: "product_id",
+    onDelete:"CASCADE",
+    onUpdate: "CASCADE"
+  })
+  Inventory.belongsTo(Product,{
+    foreignKey:"product_id"
+  });
 
 
 sequelize.sync({force: false});
@@ -62,5 +70,6 @@ module.exports = {
     Cart,
     Order,
     OrderDetails,
-    sequelize
+    sequelize,
+    Inventory
 };

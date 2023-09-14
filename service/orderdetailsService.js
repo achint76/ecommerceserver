@@ -34,16 +34,17 @@ module.exports = {
 
         await Promise.all(
             userOrder.map(async (obj) => {
-                const order_id = obj.order_id;
+                const order_id = obj.id;
 
-                const cartItem = cartdata.find((item) => item.product_id === obj.product_id);
+                const cartItem = cartdata.find((item) => item.user_id === obj.user_id);
+                console.log(cartItem,"<-----Items from cart");
 
                 if (cartItem) {
                     await models.OrderDetails.bulkCreate([
                         {
                             order_id: order_id,
-                            product_id: obj.product_id,
-                            price: 600,
+                            product_id: cartItem.product_id,
+                            price: obj.total,
                             quantity: cartItem.quantity,
                         }
                     ])

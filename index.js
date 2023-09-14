@@ -11,6 +11,8 @@ const RouterLogin = require('./routes/loginRouter');
 const RouterProfile = require('./routes/userprofileRouter');
 
 const Routercartlisting = require('./routes/cartlistingRouter');
+
+const RouterInventory = require('./routes/inventoryRouter');
 app.use(express.json());
 
 app.get('/', (req,res)=>{
@@ -29,6 +31,8 @@ app.use('/user', RouterLogin);
 app.use('/user', RouterProfile);
 
 app.use('/user', Routercartlisting);
+app.use("/inventory",RouterInventory);
+
 app.listen(3002, () => {
     console.log(`The server is running on 3002`);   
 });    

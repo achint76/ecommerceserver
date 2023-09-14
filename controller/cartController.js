@@ -102,5 +102,22 @@ module.exports = {
             updatedCart: cartdata
           })
         }
+},
+cartremove: async function(req,res){
+
+  const userdata = req.userdata;
+  console.log(userdata);
+  const data = req.body;
+  const cart = await cartService.removeCart({
+    product_id: data.product_id,
+    user_id: data.user_id
+    
+  });
+ // console.log(product_id, "product_id");
+   // console.log(user_id, "user_id");
+  res.json({
+    message: `${data.product_id} removed from cart`,
+    data: cart,
+  });
 }
 }

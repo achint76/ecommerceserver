@@ -17,8 +17,9 @@ module.exports = {
         const data = await models.Cart.findAll({
             where: {
                 user_id:userId
-            }
-        })
+            },
+            include: [models.Product],
+        });
         if(data)
         {
             return data;

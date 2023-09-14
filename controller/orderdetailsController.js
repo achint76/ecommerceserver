@@ -30,7 +30,7 @@ module.exports = {
     addingOrderDetails: async function(req,res){
         const userData= req.userdata;
     const cartData= req.cartdata;
-    console.log("cartData", cartData);
+    console.log("cartData------->=", cartData);
     // const OrderDetails = await orderdetailsService.addingOrderDetails({
     //     user_id:userData.id,
     //     cartdata:cartData
