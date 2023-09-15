@@ -1,13 +1,36 @@
 const models = require('../models/index');
-const { Op } = require("sequelize");
+const { Op, where } = require("sequelize");
 module.exports = {
     addtoinventory: async function({product_id, price, quantity}){
-        return await models.Inventory.create({
+        console.log("**************");
+        const item = await models.Inventory.create({
             product_id: product_id,
             price: price,
             quantity: quantity
         });
+        console.log("item is:---",item);
+        return item;
+        
     },
+    
+    updateInventory : async function({product_id, price, quantity}){
+        await models.Inventory.update({
+            price: models.sequelize.literal(`price + ${price}`),
+            quantity: models.sequelize.literal(`quantity+${quantity}`)
+        }, {
+            where: {
+                product_id:product_id
+            }
+        })
+
+        return models.Inventory.findOne({
+            where:{
+                product_id: product_id
+            },
+            raw: true
+        })
+    },
+
     decreasequantity: async function({ cartdata}){
         //console.log("--------><-------");
         //console.log(cartdata, "--cartdata--");

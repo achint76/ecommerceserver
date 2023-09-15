@@ -33,10 +33,10 @@ module.exports = {
         });
     },
     findProduct: async function({id}){
-        const product = await models.Product.findAll({
+        const product = await models.Inventory.findAll({
             where:{
-                id: id
-            }
+                product_id: id
+            }            
         });
         const allProduct = product.map(product=> product.toJSON());
         return (allProduct);

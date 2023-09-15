@@ -3,6 +3,7 @@ const inventoryService = require('../service/inventoryService');
 
 module.exports = {
     addtoinventory: async function(req,res){
+        console.log("###########");
         const data = req.body;
         const inventory = await inventoryService.addtoinventory({
             id: data.id,

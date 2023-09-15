@@ -4,7 +4,7 @@ const orderService = require('../service/orderService')
 async function checkOut(req,res, next){
     const data = req.userdata;
     const userId = data.id;
-    console.log(userId);
+    // console.log(userId);
         const cartdata = await profileService.checkOut({
             id : userId
         });
